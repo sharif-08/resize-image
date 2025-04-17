@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizex image app</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1> Resizex Your Image </h1>
+        <form method ="post" enctype ="multipart/form-data">
+            <label> choose an image</label><br>
+            <input type="file" name ="image" required>
+            <label> Enter resizex percentage(1-100)</label>
+            <input type="number" name ='scale'min ='1' max='100' value ="50" required>
+            <button type ="submit"> resized </button>
+        </form>
+        {% if filename %}
+        <div class="download-link">
+                <h2> resized image ready </h2>
+                <a href="{{ url_for('download',filename=filename)}}">download{{filename}}</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
